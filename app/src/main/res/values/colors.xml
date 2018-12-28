@@ -16,4 +16,5 @@
     <color name="grey_666">#666666</color>
     <color name="grey_f2">#f2f2f2</color>
     <color name="black">#000000</color>
+    <color name="un_press_color">#9C27B0</color>
 </resources>

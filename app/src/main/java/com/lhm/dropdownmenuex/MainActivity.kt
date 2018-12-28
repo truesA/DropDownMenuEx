@@ -9,6 +9,7 @@ import android.widget.ListView
 import android.widget.Toast
 import dropdownmenu.adapter.ListDropDownAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_more_tab.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -59,5 +60,15 @@ class MainActivity : AppCompatActivity() {
     fun toTab(view: View) {
         val intent = Intent(this, MoreTabActivity::class.java)
         startActivity(intent)
+    }
+
+
+    override fun onBackPressed() {
+        //退出activity前关闭菜单
+        if (task_drop_down_menu.isShowing) {
+            task_drop_down_menu.closeMenu()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

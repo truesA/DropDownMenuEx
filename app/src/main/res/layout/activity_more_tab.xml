@@ -15,7 +15,7 @@
         app:ddmaskColor="#88888888"
         app:ddmenuBackgroundColor="@color/white"
         app:ddmenuLeftselectedIcon="@drawable/bottom_left_icon"
-        app:ddmenuMenuHeightPercent="0.3"
+        app:ddmenuMenuHeightPercent="0.5"
         app:ddmenuSelectedIcon="@drawable/top_icon"
         app:ddmenuTextSize="13.0sp"
         app:ddmenuUnselectedIcon="@drawable/bottom_icon"

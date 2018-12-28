@@ -17,6 +17,9 @@ import android.widget.GridView
 import dropdownmenu.adapter.GirdDropDownAdapter
 import kotlinx.android.synthetic.main.activity_more_tab.*
 import java.util.Arrays.asList
+import com.lhm.dropdownmenuex.R.id.constellation
+
+
 
 
 class MoreTabActivity : AppCompatActivity() {
@@ -25,7 +28,7 @@ class MoreTabActivity : AppCompatActivity() {
     private lateinit var listAdapter: ListDropDownAdapter
 
     private val car = arrayOf("宝马", "奔驰", "奥迪", "特斯拉").toList()
-    private val headers = arrayOf("未完成", "车", "房")
+    private val headers = arrayOf("未完成", "车", "房","星座")
     private lateinit var listCarAdapter: ListDropDownAdapter
 
 
@@ -36,6 +39,8 @@ class MoreTabActivity : AppCompatActivity() {
     private lateinit var cityAdapter: GirdDropDownAdapter
     private lateinit var ageAdapter: ListDropDownAdapter
     private lateinit var constellationAdapter: ConstellationAdapter
+
+    private var constellationPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,15 +69,16 @@ class MoreTabActivity : AppCompatActivity() {
 
 
         //init constellation
-//        val constellationView = layoutInflater.inflate(R.layout.custom_layout, null)
-//        val constellation = ButterKnife.findById(constellationView, R.id.constellation)
-//        constellationAdapter = ConstellationAdapter(this, Arrays.asList(constellations))
-//        constellation.setAdapter(constellationAdapter)
-//        val ok = ButterKnife.findById(constellationView, R.id.ok)
-//        ok.setOnClickListener(View.OnClickListener {
-//            mDropDownMenu.setTabText(if (constellationPosition === 0) headers[3] else constellations[constellationPosition])
-//            mDropDownMenu.closeMenu()
-//        })
+        val constellationView = layoutInflater.inflate(R.layout.custom_layout, null)
+        val constellation = constellationView.findViewById<GridView>(R.id.constellation)
+        constellationAdapter = ConstellationAdapter(this, constellations)
+        constellation.adapter = constellationAdapter
+
+        val ok = constellationView.findViewById<TextView>(R.id.ok)
+        ok.setOnClickListener(View.OnClickListener {
+            tab_drop_down_menu.setTabText(if (constellationPosition === 0) headers[3] else constellations[constellationPosition])
+            tab_drop_down_menu.closeMenu()
+        })
 
 
         val popupViews = ArrayList<View>()
@@ -80,7 +86,7 @@ class MoreTabActivity : AppCompatActivity() {
         popupViews.add(listView)
         popupViews.add(carListView)
         popupViews.add(cityView)
-//        popupViews.add(constellationView)
+        popupViews.add(constellationView)
 
 
         //add item click event
@@ -90,19 +96,15 @@ class MoreTabActivity : AppCompatActivity() {
             listAdapter.setCheckItem(position)
             tab_drop_down_menu.setTabText(if (position == 0) headers[0] else types[position])
             tab_drop_down_menu.closeMenu()
-//            chiZi_model = if (position == 0) types[0] else types[position]
-//            Log.e("click0", chiZi_model)
             Toast.makeText(this, types[position], Toast.LENGTH_SHORT).show()
         }
 
         carListView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
 
             listCarAdapter.setCheckItem(position)
-            tab_drop_down_menu.setTabText(if (position == 0) headers[0] else types[position])
+            tab_drop_down_menu.setTabText(if (position == 0) headers[1] else car[position])
             tab_drop_down_menu.closeMenu()
-//            chiZi_model = if (position == 0) types[0] else types[position]
-//            Log.e("click0", chiZi_model)
-            Toast.makeText(this, types[position], Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, car[position], Toast.LENGTH_SHORT).show()
         }
 
 
@@ -111,13 +113,25 @@ class MoreTabActivity : AppCompatActivity() {
             tab_drop_down_menu.setTabText(if (position == 0) headers[2] else citys[position])
             tab_drop_down_menu.closeMenu()
 
-            Toast.makeText(this, types[position], Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, citys[position], Toast.LENGTH_SHORT).show()
         }
-
-
+        constellation.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            constellationAdapter.setCheckItem(position)
+            constellationPosition = position
+        }
 
 
         tab_drop_down_menu
                 .setDropDownMenu(Arrays.asList(*headers), popupViews)
+    }
+
+
+    override fun onBackPressed() {
+        //退出activity前关闭菜单
+        if (tab_drop_down_menu.isShowing) {
+            tab_drop_down_menu.closeMenu()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
