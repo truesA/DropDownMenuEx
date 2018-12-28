@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lhm.dropdownmenuex.MainActivity">
+
+    <dropdownmenu.DropDownMenu
+        android:id="@+id/task_drop_down_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:dddividerColor="@color/transparent"
+        app:ddmaskColor="#88888888"
+        app:ddmenuBackgroundColor="@color/white"
+        app:ddmenuLeftselectedIcon="@drawable/bottom_left_icon"
+        app:ddmenuMenuHeightPercent="0.3"
+        app:ddmenuSelectedIcon="@drawable/top_icon"
+        app:ddmenuTextSize="13.0sp"
+        app:ddmenuUnselectedIcon="@drawable/bottom_icon"
+        app:ddtextSelectedColor="@color/grey_666"
+        app:ddtextUnselectedColor="@color/grey_666"
+        app:ddunderlineColor="@color/grey_f2" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="default"
+        android:text="重置"
+        android:layout_centerInParent="true"
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toTab"
+        android:text="多个tab"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        />
+
+
+</RelativeLayout>

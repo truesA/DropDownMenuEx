@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lhm.dropdownmenuex.MoreTabActivity">
+
+
+    <dropdownmenu.DropDownMenu
+        android:id="@+id/tab_drop_down_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:dddividerColor="@color/transparent"
+        app:ddmaskColor="#88888888"
+        app:ddmenuBackgroundColor="@color/white"
+        app:ddmenuLeftselectedIcon="@drawable/bottom_left_icon"
+        app:ddmenuMenuHeightPercent="0.3"
+        app:ddmenuSelectedIcon="@drawable/top_icon"
+        app:ddmenuTextSize="13.0sp"
+        app:ddmenuUnselectedIcon="@drawable/bottom_icon"
+        app:ddtextSelectedColor="@color/grey_666"
+        app:ddtextUnselectedColor="@color/grey_666"
+        app:ddunderlineColor="@color/grey_f2" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="多tab显示"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
