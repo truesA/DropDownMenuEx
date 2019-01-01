@@ -17,4 +17,15 @@
         app:ddtextSelectedColor="@color/grey_666"//选中的文字颜色
         app:ddtextUnselectedColor="@color/grey_666"//未选中的文字颜色
         app:ddunderlineColor="@color/grey_f2" />//菜单里线的颜色
+        
+        
+            新增的重置数据的方法
+     如果需要在外部重置 最好在closeMenu() 之后调用
+     
+    public void setTabDefaultPositionText(String text) {
+        current_tab_position = 0;
+        ((TextView) tabMenuView.getChildAt(current_tab_position)).setText(text);
+        current_tab_position = -1;
+
+    }
 ```
